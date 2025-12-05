@@ -1,0 +1,6 @@
+# Proxy frontend /api/* to Firebase Functions (v2)
+# NOTE: keep this BEFORE the SPA fallback
+/api/*  https://asia-south1-ashishranjan-net.cloudfunctions.net/api/:splat  200
+
+# SPA fallback
+/*  /index.html  200

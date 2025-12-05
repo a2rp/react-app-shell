@@ -1,0 +1,78 @@
+/* src/theme.css */
+
+/* ===== Core dark theme (default) – pure grayscale ===== */
+:root {
+    /* Body / app background + its text */
+    --color-bg: #050505; /* almost black */
+    --color-bg-text: #d0d0d0; /* text on body background */
+
+    /* Main surface (cards, panels) + its text */
+    --color-surface: #111111; /* dark surface */
+    --color-surface-text: #e2e2e2; /* text on surface */
+
+    /* Softer / secondary surface + its text */
+    --color-surface-soft: #181818; /* softer panel */
+    --color-surface-soft-text: #d8d8d8; /* text on soft surface */
+
+    /* Borders */
+    --color-border: #2a2a2a; /* subtle border */
+
+    /* Generic text tokens */
+    --color-text: #d0d0d0; /* main text */
+    --color-text-muted: #9a9a9a; /* secondary text */
+    --color-heading: #ffffff; /* headings */
+
+    /* Links */
+    --color-link: #e0e0e0; /* links (light gray) */
+    --color-link-hover: #ffffff; /* links on hover */
+
+    /* Radii */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Shadow */
+    --shadow-soft: 0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 18px 45px rgba(0, 0, 0, 0.8);
+
+    --scrollbar-track: #050505; /* same as bg-ish */
+    --scrollbar-thumb: #2e2e2e; /* main thumb */
+    --scrollbar-thumb-hover: #444444; /* hover state */
+    --scrollbar-thumb-active: #666666; /* active drag */
+}
+
+/* ===== Light theme – inverted grayscale ===== */
+html[data-theme="light"] {
+    /* Body / app background + its text */
+    --color-bg: #f7f7f7; /* near white */
+    --color-bg-text: #222222; /* text on body background */
+
+    /* Main surface (cards, panels) + its text */
+    --color-surface: #ffffff; /* white surface */
+    --color-surface-text: #222222; /* text on surface */
+
+    /* Softer / secondary surface + its text */
+    --color-surface-soft: #f0f0f0; /* soft panel */
+    --color-surface-soft-text: #222222; /* text on soft surface */
+
+    /* Borders */
+    --color-border: #d4d4d4; /* light border */
+
+    /* Generic text tokens */
+    --color-text: #222222; /* main text */
+    --color-text-muted: #666666; /* secondary text */
+    --color-heading: #000000; /* headings */
+
+    /* Links */
+    --color-link: #111111; /* dark link */
+    --color-link-hover: #000000; /* hover link */
+
+    /* Shadow */
+    --shadow-soft: 0 0 0 1px rgba(0, 0, 0, 0.03),
+        0 14px 30px rgba(0, 0, 0, 0.12);
+
+    --scrollbar-track: #f0f0f0; /* light track */
+    --scrollbar-thumb: #c1c1c1; /* main thumb */
+    --scrollbar-thumb-hover: #a8a8a8; /* hover state */
+    --scrollbar-thumb-active: #8f8f8f; /* active drag */
+}

@@ -1,0 +1,327 @@
+/* src/index.css */
+@import "./theme.css";
+
+/* ===== Reset ===== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make sure base elements stretch correctly */
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+/* ===== Base layout / body ===== */
+
+html {
+    background-color: var(--color-bg);
+    color: var(--color-bg-text);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-color: var(--color-bg);
+    color: var(--color-bg-text);
+}
+
+/* Root wrapper (optional) */
+
+.appRoot {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-bg-text);
+}
+
+/* ===== Typography ===== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-heading);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.6rem;
+}
+h3 {
+    font-size: 1.3rem;
+}
+h4 {
+    font-size: 1.1rem;
+}
+h5 {
+    font-size: 1rem;
+}
+h6 {
+    font-size: 0.9rem;
+}
+
+p {
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+}
+
+small {
+    font-size: 0.8em;
+    color: var(--color-text-muted);
+}
+
+/* Lists */
+
+ul,
+ol {
+    margin-left: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+}
+
+/* Links */
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-link-hover);
+    opacity: 0.9;
+    outline: none;
+}
+
+/* ===== Structural tags ===== */
+
+main {
+    display: block;
+}
+
+main,
+section,
+article,
+aside {
+    background: transparent;
+    color: inherit;
+}
+
+header,
+footer {
+    background-color: var(--color-surface);
+    color: var(--color-surface-text);
+}
+
+/* ===== Images & media ===== */
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== Tables ===== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-surface-text);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+thead {
+    background-color: var(--color-surface-soft);
+}
+
+th,
+td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+th {
+    font-weight: 600;
+    color: var(--color-heading);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: var(--color-surface-soft);
+}
+
+/* ===== Forms & inputs ===== */
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.5rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-link);
+    box-shadow: 0 0 0 1px var(--color-border);
+}
+
+/* Checkboxes & radios keep browser look but align baseline */
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+/* ===== Buttons ===== */
+
+button {
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    background-color: var(--color-surface-soft);
+    color: var(--color-surface-soft-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    transition: background-color 0.2s ease, transform 0.1s ease,
+        box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled),
+button:focus-visible:not(:disabled) {
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-1px);
+    opacity: 0.95;
+    outline: none;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== Code & preformatted text ===== */
+
+code {
+    font-family: "Consolas", "SFMono-Regular", Menlo, Monaco, "Courier New",
+        monospace;
+    font-size: 0.85em;
+    background-color: var(--color-surface-soft);
+    color: var(--color-surface-soft-text);
+    padding: 0.1rem 0.25rem;
+    border-radius: var(--radius-sm);
+}
+
+pre {
+    font-family: "Consolas", "SFMono-Regular", Menlo, Monaco, "Courier New",
+        monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    background-color: var(--color-surface);
+    color: var(--color-surface-text);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+/* ===== Blockquotes ===== */
+
+blockquote {
+    border-left: 3px solid var(--color-border);
+    padding-left: 0.75rem;
+    margin: 0.75rem 0;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* ===== Generic surfaces / utility ===== */
+
+.surface {
+    background-color: var(--color-surface);
+    color: var(--color-surface-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+
+.surface-soft {
+    background-color: var(--color-surface-soft);
+    color: var(--color-surface-soft-text);
+    border-radius: var(--radius-md);
+}
+
+/* Spacing helpers (optional minimal set) */
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+.mt-2 {
+    margin-top: 0.5rem;
+}
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+.mb-3 {
+    margin-bottom: 1rem;
+}
