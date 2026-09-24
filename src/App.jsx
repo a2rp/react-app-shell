@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import { Styled } from './App.styled';
-import Footer from './components/footer';
-import Header from './components/header';
-import AppRoutes from './AppRoutes';
-import NavLinks from './components/navlinks';
+import { useEffect, useState } from "react";
+import { Styled } from "./App.styled";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import AppRoutes from "./AppRoutes";
+import NavLinks from "./components/navlinks";
 
 const App = () => {
     const [displayDrawer, setDisplayDrawer] = useState(false);
-    const handleToggleDisplayDrawer = () => {
-        setDisplayDrawer(prev => !prev);
-        // console.log("displayDrawer", displayDrawer);
-    };
+
+    useEffect(() => {
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = displayDrawer ? "hidden" : "";
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [displayDrawer]);
 
     return (
         <>
@@ -24,20 +29,22 @@ const App = () => {
                 </Styled.Main>
             </Styled.Wrapper>
 
-
-            {displayDrawer && <>
+            {displayDrawer && (
                 <Styled.Drawer>
-                    <div className="empty" onClick={handleToggleDisplayDrawer}></div>
+                    <div
+                        className="empty"
+                        onClick={() => setDisplayDrawer(false)}
+                        aria-label="Close navigation"
+                    />
                     <div className="navlinksWrapper">
                         <div className="navlinksScroller">
-                            <NavLinks onNavigate={handleToggleDisplayDrawer} />
+                            <NavLinks onNavigate={() => setDisplayDrawer(false)} />
                         </div>
                     </div>
                 </Styled.Drawer>
-            </>}
+            )}
         </>
-    )
-}
+    );
+};
 
 export default App;
-

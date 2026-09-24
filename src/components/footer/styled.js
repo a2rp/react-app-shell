@@ -1,42 +1,54 @@
-// src/components/footer/styled.js
 import styled from "styled-components";
 
 export const Styled = {
     Wrapper: styled.footer`
-        /* position: fixed; */
-        /* bottom: 0; */
         width: 100%;
-        height: 48px;
-
+        min-height: 64px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
-
-        padding: 0 24px;
-
-        z-index: 100;
+        gap: 16px;
+        padding: 12px 24px;
+        border-top: 1px solid var(--color-border);
 
         @media (width < 768px) {
-            height: auto;
-            padding: 10px 16px;
             flex-direction: column;
             align-items: center;
+            padding: 16px;
         }
 
-        .left {
-            white-space: nowrap;
+        p {
+            margin: 0;
+            color: var(--color-text-muted);
+            text-align: center;
         }
 
-        .right {
-            white-space: nowrap;
+        .socialLinks {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 8px;
 
-            span.heart {
-                color: #ff4d6a;
-                margin: 0 2px;
-            }
+            a {
+                width: 32px;
+                height: 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-sm);
+                color: var(--color-text-muted);
+                transition: color 0.2s ease, border-color 0.2s ease,
+                    box-shadow 0.2s ease;
 
-            @media (width < 768px) {
+                &:hover,
+                &:focus-visible {
+                    color: var(--color-heading);
+                    border-color: var(--color-heading);
+                    box-shadow: var(--shadow-soft);
+                    opacity: 1;
+                }
             }
         }
     `,

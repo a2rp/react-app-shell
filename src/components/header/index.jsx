@@ -1,57 +1,29 @@
-// src/components/header/index.jsx
 import { useEffect, useState } from "react";
-import { Styled } from "./styled";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import { Styled } from "./styled";
 
 const THEME_KEY = "react-app-shell-theme";
 
 const Header = ({ setDisplayDrawer }) => {
     const [isLight, setIsLight] = useState(false);
 
-    // On mount, read stored theme (if any) and apply
     useEffect(() => {
         try {
             const saved = window.localStorage.getItem(THEME_KEY);
-
-            if (saved === "light") {
-                document.documentElement.setAttribute("data-theme", "light");
-                setIsLight(true);
-            } else {
-                // default = dark
-                document.documentElement.removeAttribute("data-theme");
-                setIsLight(false);
-            }
-        } catch (e) {
-            // localStorage unavailable? fallback to dark
+            const lightTheme = saved === "light";
+            document.documentElement.toggleAttribute("data-theme", lightTheme);
+            setIsLight(lightTheme);
+        } catch {
             document.documentElement.removeAttribute("data-theme");
-            setIsLight(false);
         }
     }, []);
 
     const handleToggleTheme = () => {
-        setIsLight((prev) => {
-            const next = !prev;
-
-            try {
-                if (next) {
-                    // Light mode
-                    document.documentElement.setAttribute("data-theme", "light");
-                    window.localStorage.setItem(THEME_KEY, "light");
-                } else {
-                    // Dark mode
-                    document.documentElement.removeAttribute("data-theme");
-                    window.localStorage.setItem(THEME_KEY, "dark");
-                }
-            } catch (e) {
-                // ignore storage errors, still switch DOM theme
-                if (next) {
-                    document.documentElement.setAttribute("data-theme", "light");
-                } else {
-                    document.documentElement.removeAttribute("data-theme");
-                }
-            }
-
+        setIsLight((previous) => {
+            const next = !previous;
+            document.documentElement.toggleAttribute("data-theme", next);
+            window.localStorage.setItem(THEME_KEY, next ? "light" : "dark");
             return next;
         });
     };
@@ -60,7 +32,10 @@ const Header = ({ setDisplayDrawer }) => {
         <Styled.Wrapper>
             <Styled.Main>
                 <Styled.Col className="left">
-                    <NavLink to="/" className="brandName">React App Shell</NavLink>
+                    <NavLink to="/" className="brandName" aria-label="React App Shell home">
+                        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Ashish Ranjan logo" />
+                        <span>React App Shell</span>
+                    </NavLink>
                 </Styled.Col>
 
                 <Styled.Col className="right">
@@ -68,7 +43,8 @@ const Header = ({ setDisplayDrawer }) => {
                         type="button"
                         className={`themeToggle ${isLight ? "light" : "dark"}`}
                         onClick={handleToggleTheme}
-                        aria-label="Toggle theme"
+                        aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
+                        title={isLight ? "Switch to dark theme" : "Switch to light theme"}
                     >
                         <span className="themeToggleBall" />
                     </button>
@@ -76,7 +52,9 @@ const Header = ({ setDisplayDrawer }) => {
                     <button
                         type="button"
                         className="sliderLinkWrapper"
-                        onClick={() => setDisplayDrawer(prev => true)}
+                        onClick={() => setDisplayDrawer(true)}
+                        aria-label="Open navigation"
+                        title="Open navigation"
                     >
                         <IoIosMenu size={22} />
                     </button>

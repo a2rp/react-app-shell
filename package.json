@@ -1,5 +1,5 @@
 {
-    "name": "frontend",
+    "name": "react-app-shell",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -44,5 +44,7 @@
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^16.0.0",
         "vite": "^6.3.5"
-    }
+    },
+    "homepage": "https://a2rp.github.io/react-app-shell/",
+    "description": "Reusable React application shell with responsive layout, themes and navigation."
 }

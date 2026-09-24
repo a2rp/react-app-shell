@@ -27,6 +27,9 @@ export const Styled = {
     Col: styled.div`
         &.left {
             .brandName {
+                display: flex;
+                align-items: center;
+                gap: 10px;
                 padding: 8px 0;
                 /* font-size: 1.1rem; */
                 font-weight: 700;
@@ -35,6 +38,13 @@ export const Styled = {
                 color: var(--color-heading);
                 cursor: pointer;
                 user-select: none;
+
+                img {
+                    width: 34px;
+                    height: 34px;
+                    object-fit: contain;
+                    border-radius: 8px;
+                }
 
                 transition: opacity 0.2s ease, transform 0.1s ease;
 

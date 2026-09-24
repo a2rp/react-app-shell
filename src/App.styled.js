@@ -79,6 +79,7 @@ export const Styled = {
     Main: styled.main`
         position: relative;
         width: 100%;
+        padding-top: 64px;
         /* height: calc(100vh - 100px); */
         overflow-y: scroll;
         background-color: var(--color-bg);
