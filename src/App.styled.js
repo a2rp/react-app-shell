@@ -96,7 +96,43 @@ export const Styled = {
         background-color: var(--color-bg);
         color: var(--color-bg-text);
     `,
-    Drawer: styled.div`
+    GoToTop: styled.button`
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 30;
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
+        background-color: var(--color-surface);
+        color: var(--color-heading);
+        box-shadow: var(--shadow-soft);
+        cursor: pointer;
+        transition: color 0.2s ease, border-color 0.2s ease,
+            box-shadow 0.2s ease, transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--color-link);
+            color: var(--color-link);
+            box-shadow: var(--shadow-soft);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (width < 768px) {
+            right: 16px;
+            bottom: 16px;
+        }
+    `,    Drawer: styled.div`
         position: fixed;
         left: 0;
         top: 0;

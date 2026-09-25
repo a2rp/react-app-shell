@@ -11,6 +11,7 @@ A reusable React and Vite starter with a fixed header, theme switching, responsi
 - Searchable, collapsible navigation groups
 - Lazy-loaded routes with a loading fallback
 - Responsive global styles, surfaces and scrollbars
+- Floating go-to-top control with smooth scrolling
 - Reusable full-screen scrolling placeholder component
 
 ## Tech stack
