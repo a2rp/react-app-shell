@@ -62,11 +62,25 @@ export const Styled = {
                 width: 15px;
                 height: 15px;
                 cursor: pointer;
+                border: 0;
+                border-radius: 50%;
                 background: transparent;
                 padding: 0;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
+                color: var(--color-text-muted);
+
+                &:hover {
+                    background: transparent;
+                    box-shadow: none;
+                    transform: none;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid var(--color-link);
+                    outline-offset: 2px;
+                }
 
                 svg {
                     font-size: 14px;

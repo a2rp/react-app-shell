@@ -5,27 +5,38 @@ import { Styled } from "./styled";
 
 const THEME_KEY = "react-app-shell-theme";
 
-const Header = ({ setDisplayDrawer }) => {
+const Header = ({ setDisplayDrawer, isDrawerOpen }) => {
     const [isLight, setIsLight] = useState(false);
 
     useEffect(() => {
         try {
             const saved = window.localStorage.getItem(THEME_KEY);
             const lightTheme = saved === "light";
-            document.documentElement.toggleAttribute("data-theme", lightTheme);
+            if (lightTheme) {
+                document.documentElement.setAttribute("data-theme", "light");
+            } else {
+                document.documentElement.removeAttribute("data-theme");
+            }
             setIsLight(lightTheme);
         } catch {
             document.documentElement.removeAttribute("data-theme");
+            setIsLight(false);
         }
     }, []);
 
     const handleToggleTheme = () => {
-        setIsLight((previous) => {
-            const next = !previous;
-            document.documentElement.toggleAttribute("data-theme", next);
+        const next = !isLight;
+        if (next) {
+            document.documentElement.setAttribute("data-theme", "light");
+        } else {
+            document.documentElement.removeAttribute("data-theme");
+        }
+        setIsLight(next);
+        try {
             window.localStorage.setItem(THEME_KEY, next ? "light" : "dark");
-            return next;
-        });
+        } catch {
+            // Keep the selected theme for this session when storage is unavailable.
+        }
     };
 
     return (
@@ -53,6 +64,8 @@ const Header = ({ setDisplayDrawer }) => {
                         type="button"
                         className="sliderLinkWrapper"
                         onClick={() => setDisplayDrawer(true)}
+                        aria-expanded={isDrawerOpen}
+                        aria-controls="site-navigation-drawer"
                         aria-label="Open navigation"
                         title="Open navigation"
                     >

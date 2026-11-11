@@ -152,6 +152,11 @@ export const Styled = {
         .empty {
             width: 100%;
             opacity: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            flex: 1 1 auto;
 
             animation: animateEmpty 0.2s ease 1 forwards;
             @keyframes animateEmpty {
@@ -162,6 +167,18 @@ export const Styled = {
                     opacity: 1;
                 }
             }
+        }
+
+        .empty:hover,
+        .empty:focus-visible {
+            background: transparent;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .empty:focus-visible {
+            outline: 2px solid var(--color-link);
+            outline-offset: -4px;
         }
 
         .navlinksWrapper {

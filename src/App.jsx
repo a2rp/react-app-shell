@@ -28,7 +28,7 @@ const App = () => {
     return (
         <>
             <Styled.Wrapper>
-                <Header setDisplayDrawer={setDisplayDrawer} />
+                <Header setDisplayDrawer={setDisplayDrawer} isDrawerOpen={displayDrawer} />
                 <Styled.Main>
                     <Styled.RoutesWrapper>
                         <AppRoutes />
@@ -39,8 +39,9 @@ const App = () => {
             </Styled.Wrapper>
 
             {displayDrawer && (
-                <Styled.Drawer>
-                    <div
+                <Styled.Drawer id="site-navigation-drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+                    <button
+                        type="button"
                         className="empty"
                         onClick={() => setDisplayDrawer(false)}
                         aria-label="Close navigation"

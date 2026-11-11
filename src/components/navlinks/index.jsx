@@ -72,6 +72,7 @@ const SectionGroup = ({
     activeLinkRef,
 }) => {
     const [open, setOpen] = useState(isInitiallyOpen);
+    const sectionId = "nav-section-" + section.label.toLowerCase().replace(/\s+/g, "-");
 
     // Route / search ke hisaab se open-state control
     useEffect(() => {
@@ -91,9 +92,7 @@ const SectionGroup = ({
     };
 
     const handleClick = () => {
-        if (window.innerWidth < 1200 && typeof onNavigate === "function") {
-            onNavigate();
-        }
+        if (typeof onNavigate === "function") onNavigate();
     };
 
     return (
@@ -102,12 +101,15 @@ const SectionGroup = ({
                 type="button"
                 className={`sectionHeader ${open ? "open" : ""}`}
                 onClick={toggleOpen}
+                aria-expanded={open}
+                aria-controls={sectionId}
             >
                 <span className="sectionLabel">{section.label}</span>
                 <TbChevronRight className="sectionChevron" />
             </button>
 
             <div
+                id={sectionId}
                 className="sectionCollapse"
                 style={{ maxHeight: open ? "600px" : "0px" }}
             >
@@ -185,18 +187,21 @@ const NavLinks = ({ onNavigate }) => {
                         type="text"
                         className="searchInput"
                         placeholder="Search links..."
+                        aria-label="Search navigation links"
                         value={query}
                         onChange={handleChangeQuery}
                     />
                     <div className="clearBtnWrapper">
                         {query && (
-                            <div
+                            <button
+                                type="button"
                                 className="clearBtn"
                                 onClick={handleClearQuery}
                                 aria-label="Clear search"
+                                title="Clear search"
                             >
                                 <TbX size={20} />
-                            </div>
+                            </button>
                         )}
                     </div>
                 </div>
